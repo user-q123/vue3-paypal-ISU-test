@@ -18,6 +18,14 @@
     </div>
 
     <!-- <div>
+      <a data-paypal-button="true"
+        href="https://msmaster.qa.paypal.com/bizsignup/partner/entry?referralToken=NGE4MDRmZWYtNDEwNC00NjIzLThjNDEtY2ZmYWE5ZWU4MmE2NGltelRYbzFRY3ArY0FLZm9iTzYzRC94bWlKUmFCdUdDb2JpOFFZMzBkWT12Mg==&displayMode=minibrowser">
+        Onboard to PayPal
+      </a>
+
+    </div> -->
+
+    <!-- <div>
       <a target="_blank" :data-paypal-onboard-complete="onboardedCallback" href="https://www.bing.com"
         data-paypal-button="true">Minibrowser for bing.com</a>
     </div> -->
@@ -41,7 +49,17 @@ onMounted(() => {
     await getActionUrl();
 
   };
+
+  // const scriptAdditional = document.createElement('script');
+  // scriptAdditional.src = "https://www.paypal.com/webapps/merchantboarding/js/lib/lightbox/partner.js";
+  // script.onload = async () => {
+  
+  //   console.log('额外onboarding script脚本加载完成');
+
+  // };
+
   document.getElementById('externalScriptContainer').appendChild(script);
+  // document.getElementById('externalScriptContainer').appendChild(scriptAdditional);
 });
 
 const getActionUrl = async () => {
@@ -53,7 +71,8 @@ const getActionUrl = async () => {
     "email": "petro-test01-us-bs@cctest.com",
     "tracking_id": "001002003",
     "partner_config_override": {
-      "return_url": "http://localhost:5173",      
+      // "return_url": "http://localhost:5173",      
+      "return_url": "https://www.google.com",
       "show_add_credit_card": true
     },
     "operations": [{

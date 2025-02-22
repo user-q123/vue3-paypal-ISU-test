@@ -1,7 +1,7 @@
 <template>
   <div class="about">
-    <h1>This is an AboutView.vue</h1>
-    <p>On board your PayPal Account Here</p>
+    <h1>This is an ACDC.vue</h1>
+    <p>Test ACDC</p>
   </div>
 </template>
 

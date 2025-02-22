@@ -10,7 +10,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <h1>Test Page</h1>
 
       <nav>
-        <RouterLink to="/">Onboard</RouterLink>
+        <RouterLink to="/onboard">Onboard</RouterLink>
         <RouterLink to="/ACDC">ACDC</RouterLink>
       </nav>
     </div>

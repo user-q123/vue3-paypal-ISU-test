@@ -7,8 +7,9 @@
       <div id="externalScriptContainer"></div>
     </div>
     <div>
+
       <a target="_blank" :data-paypal-onboard-complete="onboardedCallback"
-        href="https://www.sandbox.paypal.com/bizsignup/partner/entry?referralToken=MzUxNzdmZmItYjU5ZS00MjU2LWIzNmYtZDM3ZjA2ODI1OTgya0xjVi9scUVtQ3AwV3BGb2hzQXNGRjRLVC9jTUM5Y1Z4bTAwNHJLRnhWND12Mg=="
+        href="https://www.sandbox.paypal.com/bizsignup/partner/entry?referralToken=NzRhYTMwODMtZDZiNC00MDc1LTkxZDUtYjdhNGViMjA3OGI1alNaSDZDSTNjRzcyc2Yrc1FqNHdQYVp1NzJaVWhyaGsyMjc5bDUwTWRRQT12Mg==&displayMode=minibrowser"
         data-paypal-button="true">Sign up for PayPal</a>
     </div>
 
@@ -17,18 +18,7 @@
         data-paypal-button="true">Sign up for PayPal Dynamic</a>
     </div>
 
-    <!-- <div>
-      <a data-paypal-button="true"
-        href="https://msmaster.qa.paypal.com/bizsignup/partner/entry?referralToken=NGE4MDRmZWYtNDEwNC00NjIzLThjNDEtY2ZmYWE5ZWU4MmE2NGltelRYbzFRY3ArY0FLZm9iTzYzRC94bWlKUmFCdUdDb2JpOFFZMzBkWT12Mg==&displayMode=minibrowser">
-        Onboard to PayPal
-      </a>
 
-    </div> -->
-
-    <!-- <div>
-      <a target="_blank" :data-paypal-onboard-complete="onboardedCallback" href="https://www.bing.com"
-        data-paypal-button="true">Minibrowser for bing.com</a>
-    </div> -->
   </div>
 </template>
 
@@ -40,26 +30,21 @@ const clientSecretStore = useClientSecretStore();
 
 
 onMounted(() => {
-  const script = document.createElement('script');
-  script.src = "https://www.sandbox.paypal.com/webapps/merchantboarding/js/lib/lightbox/partner.js"
-  script.onload = async () => {
-    // 在这里执行脚本加载完成后的操作
-    console.log('外部脚本加载完成');
+  console.log("onMounted is trigged!")
+  // setTimeout( () => {
+   
+  // }, 2000)
 
-    await getActionUrl();
+  console.log("现在开始加载外部脚本")
+    const script = document.createElement('script');
+    script.src = "https://www.sandbox.paypal.com/webapps/merchantboarding/js/lib/lightbox/partner.js"
+    script.onload = async () => {
+      // 在这里执行脚本加载完成后的操作
+      console.log('外部脚本加载完成');
+      await getActionUrl();
+    };
+    document.getElementById('externalScriptContainer').appendChild(script);
 
-  };
-
-  // const scriptAdditional = document.createElement('script');
-  // scriptAdditional.src = "https://www.paypal.com/webapps/merchantboarding/js/lib/lightbox/partner.js";
-  // script.onload = async () => {
-  
-  //   console.log('额外onboarding script脚本加载完成');
-
-  // };
-
-  document.getElementById('externalScriptContainer').appendChild(script);
-  // document.getElementById('externalScriptContainer').appendChild(scriptAdditional);
 });
 
 const getActionUrl = async () => {
@@ -108,7 +93,7 @@ const getActionUrl = async () => {
   const link = data.links[1].href;
   alert("Onboard Link is created: " + link);
   console.log("Onboard Link is created: " + link)
-  dynamicUrl.value = link;
+  dynamicUrl.value = `${link}&displayMode=minibrowser`;
 }
 
 
